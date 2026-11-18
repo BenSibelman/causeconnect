@@ -37,7 +37,7 @@ political advocacy groups that the user might like to get involved in.
    https://platform.openai.com/login and purchase some tokens
 2. Run rebert/classes/data/KeyManager.py, press n, hit enter, and follow the
    instructions to add your API key with the domain api.openai.com
-3. Run _causeconnect_1_0_/recommender_0.1.py
+3. Run _causeconnect_0_1_/recommender_0.1.py
 4. Maximize your browser window (responsive layout will be implemented soon!)
 5. Press the big button in the web interface to start the AI interview
 6. Answer as many of the 4 questions as you like and click Recommend when you're

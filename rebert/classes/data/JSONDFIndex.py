@@ -22,9 +22,9 @@
 import sys, os, json, datetime, hashlib
 #
 #   Inherits from the standard object
-from causeconnect_ai.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.base.Object import Object
 #   This is a tree structure for data types other than strings
-from causeconnect_ai.rebert.classes.data.AVLTree import AVLTree
+from causeconnect.rebert.classes.data.AVLTree import AVLTree
 
 #
 #   The name of the index file
@@ -130,7 +130,7 @@ class JSONDFIndex(Object):
         objects     : an object access dictionary, provided by the JSONDataFolder
         stops       : An optional stopwords object, used with string indexing
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(name=name, *args, **kwargs)
         #

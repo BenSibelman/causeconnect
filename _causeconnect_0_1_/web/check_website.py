@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #   FILE: ReviewArticleBase.py
-#   REVISION: June, 2026
+#   REVISION: November, 2026
 #   CREATION DATE: June, 2026
 #   AUTHOR: Ben Sibelman
 #
@@ -18,14 +18,14 @@
 #   different websites
 #
 import requests.exceptions
-from causeconnect_ai.rebert.classes.base.HTTPConnection import HTTPConnection
+from causeconnect.rebert.classes.base.HTTPConnection import HTTPConnection
 #
 #   Common exceptions we might hit
 from requests.exceptions import SSLError
 from urllib3.exceptions import MaxRetryError
 #
-from causeconnect_ai._causeconnect_1_0_.web.config import *
-from causeconnect_ai._causeconnect_1_0_.web.utilities import *
+from causeconnect._causeconnect_0_1_.web.config import *
+from causeconnect._causeconnect_0_1_.web.utilities import *
 from urllib3.exceptions import MaxRetryError
 
 #
@@ -56,7 +56,7 @@ class CheckWebsite(HTTPConnection):
 
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(name=name, logger=None, *args, **kwargs)
         #

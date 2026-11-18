@@ -15,7 +15,7 @@
 import os, sys, json, datetime
 
 #   The key manager will inherit from our base Object class
-from causeconnect_ai.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.base.Object import Object
 
 # 
 #   This dictionary structure is the default data stored for each key. Not all

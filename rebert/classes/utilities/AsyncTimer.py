@@ -14,7 +14,7 @@
 #   Copyright by Author. All rights reserved. Not for reuse without express permissions.
 #
 import sys, time, random
-from causeconnect_ai.rebert.classes.base.ThreadedObject import Object
+from causeconnect.rebert.classes.base.ThreadedObject import Object
 
 class AsyncTimer(Object):
     def __init__(self, *args, **kwargs):
@@ -23,7 +23,7 @@ class AsyncTimer(Object):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(*args, **kwargs)       
         self.ticks = 0

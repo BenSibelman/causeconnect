@@ -21,15 +21,15 @@ import sys, os
 from flask import Flask, request
 #
 #
-from causeconnect_ai._causeconnect_1_0_.web.config import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.setup import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.serve_main_page import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.serve_ephem_rec import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.config import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.setup import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.serve_main_page import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.serve_ephem_rec import *    # MODIFIED
 #
 #   Required set up before any serving actions
 app = Flask(__name__)
 #   This also seems to work
-#app = Flask("causeconnect_ai._causeconnect_1_0_.web.wsgi")    # MODIFIED
+#app = Flask("causeconnect._causeconnect_0_1_.web.wsgi")    # MODIFIED
 #
 global SERVER_STATE
 SERVER_STATE = initalize_server_state()

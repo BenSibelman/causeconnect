@@ -21,10 +21,10 @@ import sys, os, datetime, hashlib, json, copy
 #   This comes from the rebert class library and manages API keys
 #   You should use it to store your OpenAI API key locally, so your
 #   key is not stored as a constant in the code.
-from causeconnect_ai.rebert.classes.data.KeyManager import KeyManager
+from causeconnect.rebert.classes.data.KeyManager import KeyManager
 
-from causeconnect_ai._causeconnect_1_0_.web.config import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.utilities import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.config import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.utilities import *    # MODIFIED
 
 MODULE_SETUP_DEBUG = False
 

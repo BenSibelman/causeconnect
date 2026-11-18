@@ -24,7 +24,7 @@ import requests
 #
 #
 #   This HTTP connection object will allow threading, so we'll base it off our threading object
-from causeconnect_ai.rebert.classes.base.ThreadedObject import Object
+from causeconnect.rebert.classes.base.ThreadedObject import Object
 
 
 #####
@@ -190,7 +190,7 @@ class HTTPConnection(Object):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(*args, **kwargs)
         #

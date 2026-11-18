@@ -20,7 +20,7 @@
 import sys, datetime, json, copy
 #
 #   This Chat class is based on the OpenAIAPIBase class
-from causeconnect_ai.rebert.classes.OpenAI.OpenAIAPIBase import OpenAIAPIBase
+from causeconnect.rebert.classes.OpenAI.OpenAIAPIBase import OpenAIAPIBase
 #
 #####
 #   
@@ -61,7 +61,7 @@ class Chat(OpenAIAPIBase):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(name=name, *args, **kwargs)
         #   These two are set at the OpenAIAPIBase() class level and do not need overriding

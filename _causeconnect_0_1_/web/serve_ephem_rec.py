@@ -22,10 +22,10 @@ from flask import render_template
 from markupsafe import escape
 #
 #
-from causeconnect_ai._causeconnect_1_0_.web.config import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.prompts import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.llm import *    # MODIFIED
-from causeconnect_ai._causeconnect_1_0_.web.utilities import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.config import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.prompts import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.llm import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.utilities import *    # MODIFIED
 #
 #  
 #

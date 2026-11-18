@@ -28,11 +28,11 @@ import sys, time, datetime, json, copy
 from threading import Semaphore
 #
 #   This class is a sub-class of HTTPConnection
-from causeconnect_ai.rebert.classes.base.HTTPConnection import HTTPConnection
+from causeconnect.rebert.classes.base.HTTPConnection import HTTPConnection
 #
 #   Need to know something about the type of payloads that are sent in a request
-from causeconnect_ai.rebert.classes.OpenAI.payload.ChatRequestPayload import ChatRequestPayload
-from causeconnect_ai.rebert.classes.OpenAI.payload.TranscriptionPayload import TranscriptionPayload
+from causeconnect.rebert.classes.OpenAI.payload.ChatRequestPayload import ChatRequestPayload
+from causeconnect.rebert.classes.OpenAI.payload.TranscriptionPayload import TranscriptionPayload
 
 
 #####
@@ -100,7 +100,7 @@ class OpenAIAPIBase(HTTPConnection):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(name=name, *args, **kwargs)
 

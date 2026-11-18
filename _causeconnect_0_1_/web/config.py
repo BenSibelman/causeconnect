@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # 
 #   FILE: config.py
-#   REVISION: June, 2026
+#   REVISION: November, 2026
 #   CREATION DATE: October, 2024
 #   Authors: David W. McDonald, Ben Sibelman
 #

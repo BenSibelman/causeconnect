@@ -16,7 +16,7 @@
 #
 
 import sys, os, copy, io, collections, json
-from causeconnect_ai.rebert.classes.data.DictionaryValidatorFromTemplate import DictionaryValidatorFromTemplate
+from causeconnect.rebert.classes.data.DictionaryValidatorFromTemplate import DictionaryValidatorFromTemplate
 #
 #   This should come with the requests module
 from requests_toolbelt import MultipartEncoder
@@ -192,7 +192,7 @@ class TranscriptionPayload(DictionaryValidatorFromTemplate):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         template    : A template dictionary for the data structure
         extensions  : A list of the acceptable file extensions for this class/object
         '''

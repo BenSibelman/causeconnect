@@ -30,8 +30,8 @@
 #   Copyright by Author. All rights reserved. Not for reuse without express permissions.
 #
 import json, pickle, hmac, hashlib
-from causeconnect_ai.rebert.classes.base.Object import Object
-from causeconnect_ai.rebert.classes.data.AVLNode import AVLNode
+from causeconnect.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.data.AVLNode import AVLNode
 
 
 class AVLTree(Object):

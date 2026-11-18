@@ -20,7 +20,7 @@ import sys, os, datetime, hashlib, json
 #   Used when reading variables from user data fields
 from markupsafe import escape
 
-from causeconnect_ai._causeconnect_1_0_.web.config import *    # MODIFIED
+from causeconnect._causeconnect_0_1_.web.config import *    # MODIFIED
 
 
 
@@ -124,7 +124,7 @@ def load_session_state(session_id=None):
 #
 #
 #   We need this class to serialize the chat message turns in the session state
-from causeconnect_ai.rebert.classes.data.DictionaryValidatorFromTemplate import DVFTJSONEncoder
+from causeconnect.rebert.classes.data.DictionaryValidatorFromTemplate import DVFTJSONEncoder
 
 def save_session_state(session_info=None):
     if not session_info: 

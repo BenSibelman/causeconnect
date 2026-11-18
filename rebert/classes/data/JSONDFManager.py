@@ -14,9 +14,9 @@
 import sys, os, json, datetime, hashlib
 #
 #   Inherits from the standard object
-from causeconnect_ai.rebert.classes.base.Object import Object
-from causeconnect_ai.rebert.classes.data.JSONDataFolder import JSONDataFolder
-from causeconnect_ai.rebert.classes.data.JSONDFIndex import JSONDFIndex
+from causeconnect.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.data.JSONDataFolder import JSONDataFolder
+from causeconnect.rebert.classes.data.JSONDFIndex import JSONDFIndex
 #
 #
 
@@ -58,7 +58,7 @@ class JSONDFManager(Object):
         
         Optional Parameters:
         name            : An optional description or name for the object
-        logger          : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger          : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(name=name, *args, **kwargs)
         #

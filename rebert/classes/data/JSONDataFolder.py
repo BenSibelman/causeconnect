@@ -17,8 +17,8 @@
 import sys, os, json, datetime, hashlib
 #
 #   Inherits from the standard object
-from causeconnect_ai.rebert.classes.base.Object import Object
-from causeconnect_ai.rebert.classes.data.JSONDFIndex import JSONDFIndex
+from causeconnect.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.data.JSONDFIndex import JSONDFIndex
 #
 #   Defaut max number of items in a given file
 DF_DEFAULT_MAX_ITEMS = 5000
@@ -118,7 +118,7 @@ class JSONDataFolder(Object):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(name=name, *args, **kwargs)
         #

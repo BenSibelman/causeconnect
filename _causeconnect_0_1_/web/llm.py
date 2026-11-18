@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # 
 #   FILE: llm.py
-#   REVISION: June, 2026
+#   REVISION: November, 2026
 #   CREATION DATE: October, 2024
 #   Authors: David W. McDonald, Ben Sibelman
 #
@@ -17,29 +17,29 @@
 #
 import sys, os, datetime, time, hashlib, json, copy
 #
-from causeconnect_ai._causeconnect_1_0_.web.config import *
-from causeconnect_ai._causeconnect_1_0_.web.prompts import *
-from causeconnect_ai._causeconnect_1_0_.web.utilities import *
-from causeconnect_ai._causeconnect_1_0_.web.check_website import CheckWebsite
+from causeconnect._causeconnect_0_1_.web.config import *
+from causeconnect._causeconnect_0_1_.web.prompts import *
+from causeconnect._causeconnect_0_1_.web.utilities import *
+from causeconnect._causeconnect_0_1_.web.check_website import CheckWebsite
 #
 #
 #   This comes from the rebert class library and manages API keys
 #   You should use it to store your OpenAI API key locally, so your
 #   key is not stored as a constant in the code.
-from causeconnect_ai.rebert.classes.data.KeyManager import KeyManager
+from causeconnect.rebert.classes.data.KeyManager import KeyManager
 #
 #   This class encapsulates the OpenAI chat completion API. It is
 #   a 'souped up' version of the calls that were being made to
 #   the requests library in the prior prototypes. This Chat class
 #   will help with some error handling and simplify how we make
 #   API calls.
-from causeconnect_ai.rebert.classes.OpenAI.Chat import Chat
+from causeconnect.rebert.classes.OpenAI.Chat import Chat
 #
 #   These two classes are data structures that help construct and
 #   manage the chat request body. As our requests get more complex
 #   we will want a way to manage them.
-from causeconnect_ai.rebert.classes.OpenAI.payload.ChatMessage import ChatMessage
-from causeconnect_ai.rebert.classes.OpenAI.payload.ChatRequestPayload import ChatRequestPayload
+from causeconnect.rebert.classes.OpenAI.payload.ChatMessage import ChatMessage
+from causeconnect.rebert.classes.OpenAI.payload.ChatRequestPayload import ChatRequestPayload
 #
 #
 #

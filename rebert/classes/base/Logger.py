@@ -14,7 +14,7 @@
 #   Copyright by Author. All rights reserved. Not for reuse without express permissions.
 #
 import logging, inspect, copy, os
-from causeconnect_ai.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.base.Object import Object
 
 #####
 #   

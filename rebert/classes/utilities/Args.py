@@ -21,7 +21,7 @@
 #
 import sys, json
 from datetime import datetime
-from causeconnect_ai.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.base.Object import Object
 #
 #
 #####
@@ -222,7 +222,7 @@ class Args(Object):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         template    : A template dictionary describing the command line params
         '''
         super().__init__(*args, **kwargs)       

@@ -33,7 +33,7 @@
 #   
 #   Copyright by Author. All rights reserved. Not for reuse without express permissions.
 #
-from causeconnect_ai.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.base.Object import Object
 
 
 class AVLNode(Object):

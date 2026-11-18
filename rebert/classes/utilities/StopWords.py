@@ -11,7 +11,7 @@
 #   
 #   Copyright by Author. All rights reserved. Not for reuse without express permissions.
 #
-from causeconnect_ai.rebert.classes.base.Object import Object
+from causeconnect.rebert.classes.base.Object import Object
 
 
 #####
@@ -50,7 +50,7 @@ class StopWords(Object):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         size        : An optional term that describes the size of the stopword list
         '''
         super().__init__(*args, **kwargs)       

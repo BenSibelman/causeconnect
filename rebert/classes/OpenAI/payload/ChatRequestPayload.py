@@ -14,8 +14,8 @@
 #
 
 import sys, copy, collections, json
-from causeconnect_ai.rebert.classes.data.DictionaryValidatorFromTemplate import DictionaryValidatorFromTemplate
-from causeconnect_ai.rebert.classes.OpenAI.payload.ChatMessage import ChatMessage
+from causeconnect.rebert.classes.data.DictionaryValidatorFromTemplate import DictionaryValidatorFromTemplate
+from causeconnect.rebert.classes.OpenAI.payload.ChatMessage import ChatMessage
 
 
 #####
@@ -153,7 +153,7 @@ class ChatRequestPayload(DictionaryValidatorFromTemplate):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         template    : A template dictionary for the data structure
         '''
         if "template" not in kwargs:

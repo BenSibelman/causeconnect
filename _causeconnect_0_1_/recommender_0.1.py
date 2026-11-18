@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # 
-#   FILE: recommender_1.0.py
+#   FILE: recommender_0.1.py
 #   REVISION: November, 2024
 #   CREATION DATE: October, 2024
 #   Authors: David W. McDonald, Ben Sibelman
@@ -16,7 +16,7 @@
 #
 import os, sys, time, datetime, webbrowser
 #
-from causeconnect_ai.rebert.classes.utilities.Args import Args
+from causeconnect.rebert.classes.utilities.Args import Args
 from web.config import *
 #
 #

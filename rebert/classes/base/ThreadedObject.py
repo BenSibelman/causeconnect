@@ -69,7 +69,7 @@ class Object(Thread):
         
         Optional Parameters:
         name        : An optional description or name for the object
-        logger      : An optional Logger object (causeconnect_ai.rebert.classes.base.Logger)
+        logger      : An optional Logger object (causeconnect.rebert.classes.base.Logger)
         '''
         super().__init__(group=None, target=None, name=None)
         self.disable_debug = True          # by default threaded objects start with output suppressed
