@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # 
-#   FILE: recommender_6.0.py
+#   FILE: recommender_1.0.py
 #   REVISION: November, 2024
 #   CREATION DATE: October, 2024
-#   Author: David W. McDonald
+#   Authors: David W. McDonald, Ben Sibelman
 #
 #   First cut launcher
 #
@@ -16,8 +16,8 @@
 #
 import os, sys, time, datetime, webbrowser
 #
-from rebert.classes.utilities.Args import Args
-from rebert._prototype_6_.web.config import *
+from causeconnect_ai.rebert.classes.utilities.Args import Args
+from web.config import *
 #
 #
 SERVER_PROTOCOL = "http://"
@@ -42,27 +42,21 @@ BROWSER_DEFAULT = "default"
 #   this program will accept.
 PARAMS_TEMPLATE = {
     "-browser" : {
-            "required"  : False,        # wether or not this flag is required
+            "required"  : False,        # whether or not this flag is required
             "type"      : str,          # the value type, used for potential conversion
             "notes"     : "<the browser to launch>",     # a note related to the flag
             "default"   : BROWSER_DEFAULT,  # use this browser
             "options"   : BROWSER_NAMES # the set, list of browsers that python knows
         },
     "-delay" : {
-            "required"  : False,        # wether or not this flag is required
+            "required"  : False,        # whether or not this flag is required
             "type"      : float,        # the value type, used for potential conversion
             "notes"     : "<delay before browser launch>",     # a note related to the flag
             "default"   : SERVER_SETUP_DELAY,          
             "range"     : [1.0, 180.0]  # range of delay values
         },
-    "-mockup" : {
-            "required"  : False,        # wether or not this flag is required
-            "type"      : bool,         # the value type, used for potential conversion
-            "notes"     : "<show the mockup of this prototype>",     # a note related to the flag
-            "default"   : False         # don't show the mockup by default
-        },
     "-port" : {
-            "required"  : False,        # wether or not this flag is required
+            "required"  : False,        # whether or not this flag is required
             "type"      : int,          # the value type, used for potential conversion
             "notes"     : "<server port>", # a note related to the flag
             "default"   : SERVER_PORT   # the default port
@@ -86,22 +80,6 @@ PARAMS_TEMPLATE = {
             "default"   : False          # don't ask for help by default
         }
     }
-#
-#
-#
-#   Check whether or not the movie data file exists. This determines whether or not
-#   the code launches the collection from setup.py. That collection can take a long 
-#   time. This is currently set to only collect once per day, upon a launch of the
-#   server
-#
-def movie_data_exists():
-    current_time = datetime.datetime.now()
-    date_str = str(current_time).partition(' ')[0]
-    date_str = date_str.replace('-','')
-    data_filename = REBERT_DATA_FILE_TEMPLATE.format(ver=REBERT_VERS,
-                                                     date_str=date_str)
-    data_file_path = os.path.join(REBERT_TEMP_FILE_DIRECTORY,data_filename)
-    return os.path.isfile(data_file_path)
 #
 #
 #   Use the python webbrowser module to get that browser application, launch it.
@@ -131,33 +109,20 @@ def main():
         p.usage(sys.argv)
         return
     #
-    if p['mockup']:
-        #   Launch the server with the current mockup
-        launch_command = f"flask --app {MOCKUP_APP} run --port {p['port']}"
-        print(f"Launching mockup app: '{MOCKUP_APP}'")
-    else:
-        #   Get ready to launch the server and point a browser at it
-        launch_command = f"flask --app {p['app']} run --port {p['port']}"
+    launch_command = f"flask --app {p['app']} run --port {p['port']}"
     #
     #   Launch the server, either with the mockup or the full app
     server_output_pipe = os.popen(launch_command)
     #
-    #   We only try to launch a browser and automatically connect if
-    #   the rebert data already exists or if we're just shoing the mockup
-    if p['mockup'] or movie_data_exists():
-        #   Try to launch a browser, with the server's URL
-        try:
-            time.sleep(p['delay'])
-            server_url = SERVER_PROTOCOL+SERVER_LOCALHOST+":"+str(p['port'])
-            browser = select_browser(p['browser'])
-            browser.open(server_url,new=1)
-        except Exception as e:
-            print(str(e))
-            print(f"Was not able to launch the '{p['browser']}' browser.")
-    else:
-        print("NOTE: The rebert server needs to create a data file containing updated movie data.")
-        print("This can take several minutes. A web browser will NOT be launched. Follow the instructions")
-        print("below to launch your browser and connect to the server using the indicated URL.")
+    #   Try to launch a browser, with the server's URL
+    try:
+        time.sleep(p['delay'])
+        server_url = SERVER_PROTOCOL+SERVER_LOCALHOST+":"+str(p['port'])
+        browser = select_browser(p['browser'])
+        browser.open(server_url,new=1)
+    except Exception as e:
+        print(str(e))
+        print(f"Was not able to launch the '{p['browser']}' browser.")
     #
     #   Now, start printing the output of the server to the terminal window
     print(server_output_pipe.read())

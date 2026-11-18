@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 # 
 #   FILE: utilities.py
-#   REVISION: October, 2024
+#   REVISION: June, 2026
 #   CREATION DATE: October, 2024
-#   Author: David W. McDonald
+#   Authors: David W. McDonald, Ben Sibelman
 #
-#   A set of utility functions to support the rebert web app
+#   A set of utility functions to support the CauseConnect AI web app
 #
 #
 #{{RELEASE}}
@@ -20,7 +20,7 @@ import sys, os, datetime, hashlib, json
 #   Used when reading variables from user data fields
 from markupsafe import escape
 
-from rebert._prototype_6_.web.config import *
+from causeconnect_ai._causeconnect_1_0_.web.config import *    # MODIFIED
 
 
 
@@ -78,10 +78,10 @@ def generate_session_id(request=None):
 
 
 def extract_main_page_form_data(request=None):
-    ui_state = REBERT_MAINPAGE_UI_STATE_TEMPLATE.copy()
+    ui_state = CC_MAINPAGE_UI_STATE_TEMPLATE.copy()
     try:
         ui_state['session_id'] = escape(request.form["session_id"])
-        ui_state['rebert_text'] = escape(request.form["ask_output"])
+        ui_state['cc_text'] = escape(request.form["ask_output"])
         ui_state['user_question'] = escape(request.form["question_text"])
         ui_state['synopsis_state'] = request.form["synopsis_state"]
         ui_state['discuss_state'] = request.form["discuss_state"]
@@ -97,6 +97,9 @@ def extract_main_page_form_data(request=None):
                         "extract_main_page_form_data()")
         print_server_log(f"{e}","extract_main_page_form_data()")
         raise
+
+    #   Make sure we have a list here, we've had occasional crashes where a None value ended up in the UI
+    ui_state['discuss_content'] = list()
     return ui_state
 
 
@@ -104,8 +107,8 @@ def extract_main_page_form_data(request=None):
 def load_session_state(session_id=None):
     if not session_id: return None
     session_state = None
-    state_filename = REBERT_SESS_FILE_TEMPLATE.format(session_id=session_id)
-    state_file_path = os.path.join(REBERT_TEMP_FILE_DIRECTORY,state_filename)
+    state_filename = CC_SESS_FILE_TEMPLATE.format(session_id=session_id)
+    state_file_path = os.path.join(CC_TEMP_FILE_DIRECTORY,state_filename)
     if os.path.isfile(state_file_path):
         try:
             session_file = open(state_file_path,"r")
@@ -121,7 +124,7 @@ def load_session_state(session_id=None):
 #
 #
 #   We need this class to serialize the chat message turns in the session state
-from rebert.classes.data.DictionaryValidatorFromTemplate import DVFTJSONEncoder
+from causeconnect_ai.rebert.classes.data.DictionaryValidatorFromTemplate import DVFTJSONEncoder
 
 def save_session_state(session_info=None):
     if not session_info: 
@@ -130,8 +133,8 @@ def save_session_state(session_info=None):
                         MODULE_UTILITIES_DEBUG)
         return
     session_id = session_info['session_id']
-    state_filename = REBERT_SESS_FILE_TEMPLATE.format(session_id=session_id)
-    state_file_path = os.path.join(REBERT_TEMP_FILE_DIRECTORY,state_filename)
+    state_filename = CC_SESS_FILE_TEMPLATE.format(session_id=session_id)
+    state_file_path = os.path.join(CC_TEMP_FILE_DIRECTORY,state_filename)
     try:
         print_server_log(f"Saving: {state_file_path}",
                         "save_session_state()",
@@ -146,64 +149,24 @@ def save_session_state(session_info=None):
     return
 
 
-
-def load_movie_data():
-    movie_data = None
-    current_time = datetime.datetime.now()
-    date_str = str(current_time).partition(' ')[0]
-    date_str = date_str.replace('-','')
-    data_filename = REBERT_DATA_FILE_TEMPLATE.format(ver=REBERT_VERS,
-                                                     date_str=date_str)
-    data_file_path = os.path.join(REBERT_TEMP_FILE_DIRECTORY,data_filename)
-    if os.path.isfile(data_file_path):
-        try:
-            data_file = open(data_file_path,"r")
-            movie_data = json.load(data_file)
-            data_file.close()
-        except Exception as e:
-            print_server_log(f"Caught exception","load_movie_data()")
-            print_server_log(f"{e}","load_movie_data()")
-            movie_data = None
-            data_file = None
-    return movie_data
-
-
-
-def save_movie_data(movie_data=None):
-    if not movie_data: 
-        print_server_log(f"NO movie_data to save",
-                        "save_movie_data()",
-                        MODULE_UTILITIES_DEBUG)
-        return
-    current_time = datetime.datetime.now()
-    date_str = str(current_time).partition(' ')[0]
-    date_str = date_str.replace('-','')
-    data_filename = REBERT_DATA_FILE_TEMPLATE.format(ver=REBERT_VERS,
-                                                     date_str=date_str)
-    data_file_path = os.path.join(REBERT_TEMP_FILE_DIRECTORY,data_filename)
-    movie_data['filename'] = data_file_path
-    movie_data['timestamp'] = str(current_time).partition('.')[0]
-    try:
-        print_server_log(f"Saving: {data_file_path}",
-                        "save_movie_data()",
-                        MODULE_UTILITIES_DEBUG)
-        movie_file = open(data_file_path,"w")
-        json.dump(movie_data,movie_file)
-        movie_file.close()
-    except Exception as e:
-        print_server_log(f"Caught exception","save_movie_data()")
-        print_server_log(f"{e}","save_movie_data()")
-        movie_file = None
-    return
-
-
-
 def print_server_log(text="", proc="", emit=True):
     if emit:
         if proc:
-            sys.stderr.write(f"{REBERT_VERS_STR}@{proc}: {text}\n")
+            sys.stderr.write(f"{CC_VERS_STR}@{proc}: {text}\n")
         else:
-            sys.stderr.write(f"{REBERT_VERS_STR}: {text}\n")
+            sys.stderr.write(f"{CC_VERS_STR}: {text}\n")
     return
+
+
+def parse_tag_contents(source, tag_name, start_index = 0):
+    end_tag = "</" + tag_name[1:]
+    tag_start = source.find(tag_name, start_index)
+    if (tag_start < 0):
+        return ""
+    content_start = tag_start + len(tag_name)
+    content_end = source.find(end_tag, content_start)
+    if (content_end < 0):
+        return ""
+    return source[content_start:content_end]
 
 

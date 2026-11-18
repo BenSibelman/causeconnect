@@ -24,7 +24,7 @@
           --bs-tooltip-color: var(--bs-white);
         }
     </style>
-    <title>Rebert: LLM Movie Recommender</title>
+    <title>CauseConnect: LLM Recommender for Organizations that Change the World</title>
 </head>
 
 <body>
@@ -54,36 +54,11 @@
 
 <!-- HEADLINE Section -->
 <div class="container-fluid border-0 bg-light">
-  <div class="row" style="height:200px">
-    <div class="col-md-2">
-      <a href="/">
-      <img src="/static/rebert_logo.png" alt="Rebert Logo" width="200" height="200"></a>
+  <div class="row">
+    <div class="col-md-10" style="line-height: 1;">
+      <rebert-h>CauseConnect AI</rebert-h>
+      <p><rebert-p>Find your place to make a difference!</rebert-p></p>
     </div>
-    <div class="col-md-10">
-      <rebert-h>Rebert</rebert-h>
-      <p><rebert-p>Your Favorite Movie Recommender</rebert-p></p>
-    </div>
-  </div>
-</div>
-
-
-<!-- NAVBAR - buttons or menues -->
-<div class="row bg-light">
-  <div class="col-md-2 border-0">
-  </div>
-  <div class="col-md-2 d-grid border-0">
-    <button type="button" class="btn btn-outline-secondary btn-block" >About</button>
-  </div>
-  <div class="col-md-2 d-grid border-0">
-    <button type="button" class="btn btn-outline-secondary btn-block" >Rate Movies</button>
-  </div>
-  <div class="col-md-2 d-grid border-0">
-    <button type="button" class="btn btn-outline-secondary btn-block" >Sign-up</button>
-  </div>
-  <div class="col-md-2 d-grid border-0">
-    <button type="button" class="btn btn-outline-secondary btn-block" >Sign-in</button>
-  </div>
-  <div class="col-md-2 border-0">
   </div>
 </div>
 
@@ -115,7 +90,7 @@
   <div class="row bg-light" style="min-height:20px">
     <div class="col-md-2 border-0"></div>
     <div class="col-md-8 border-0">
-      <button class="btn btn-outline-secondary" onclick="showEphemeralQuestions(); return false;"><p class="fs-5">Answer up to 3 questions and Rebert can suggest one of these movies for you!</p></button>
+      <button class="btn btn-outline-secondary" onclick="showEphemeralQuestions(); return false;"><p class="fs-5">Answer up to 3 questions and CauseConnect can suggest change-making organizations that align with your values and interests.</p></button>
     </div>
     <div class="col-md-2 border-0"></div>
   </div>
@@ -126,11 +101,12 @@
 <div id="ephemeral-questions" class="collapse bg-light">
     <div class="container mt-0">
       <div class="mb-3 mt-0">
-        <label class="fs-5" id="ephem-question">{{state.ephem_p_text}}</label>
+        <label class="fs-5" id="ephem-question" style="white-space: pre-line; margin-bottom: 15px;">{{state.ephem_p_text}}</label>
         <textarea class="form-control" rows="3" id="ephem_answer" name="ephem_answer"></textarea>
       </div>
 {% if state.ephem_q_last %}
       <button type="submit" class="btn btn-primary" formaction="/ephem_recommend">Recommend</button>
+      <button type="submit" class="btn btn-secondary" formaction="/ephem_recommend_local">Recommend local groups only</button>
 {% else %}
       <button type="submit" class="btn btn-secondary" formaction="/ephem_recommend">Recommend</button>
       <button type="submit" class="btn btn-primary" formaction="/next_question">Next Question</button>
@@ -143,6 +119,7 @@
         <div class="col-md-12 border-0" ><p>&nbsp;</p></div>
       </div>
     </div>
+    <div class="fs-5">{{state.highlights_msg}}</div>
 </div>
 
 
@@ -155,7 +132,7 @@
 {% if rec.flag %}
       <img class="mx-auto d-block" src="static/indicators/{{rec.flag}}" alt="{{rec.text}}" 
         data-bs-toggle="tooltip" data-bs-placement="top"
-        data-bs-title="{{rec.rebert_rationale}}" ></div>
+        data-bs-title="{{rec.rationale}}" ></div>
 {% else %}
       <img class="mx-auto d-block" src="static/spacers/40hx1wp-transparent.png" alt="no recommendation" ></div>
 {% endif %}
@@ -164,39 +141,34 @@
   </div>
 </div>
 
-<!-- PAGE BODY - movie highlight section -->
+<!-- PAGE BODY - org highlight section -->
 <div class="row border-0 bg-light">
-{% for movie in session.highlights %}
-  <!-- COLUMN {{movie.column}} -->
+{% for org in session.highlights %}
+  <!-- COLUMN {{org.column}} -->
   <!-- VARIABLES
-    movie.column:  {{movie.column}}
-    movie.title:   {{movie.title}}
-    movie.synop:   {{movie.synop}}
-    movie.poster:  {{movie.poster}}
-    movie.release: {{movie.release}}
+    org.column:     {{org.column}}
+    org.title:      {{org.title}}
+    org.synop:      {{org.synop}}
+    org.url:        {{org.url}}
+    org.linktext:   {{org.linktext}}
+    org.warning:    {{org.warning}}
   -->
-  <div class="col-md-2 border-0" id="column_{{movie.column}}">
+  <div class="col-md-2 border-0" id="column_{{org.column}}">
     <!-- column container -->
-    <div class="container h-100" >  
-      <!-- movie toast -->
-      <div class="toast z-2 position-absolute" id="synopsis_{{movie.column}}">
-        <div class="toast-header">
-          <strong class="me-auto">Synopsis: {{movie.title}}</strong>
-          <button type="button" class="btn-close" onclick="hideSynopsisToast({{movie.column}});"></button>
-        </div>
-        <div class="toast-body">
-          <p>{{movie.synop}}</p>
-        </div>
-      </div>
-      <!-- movie poster card -->
+    <div class="container h-100" >
+      <!-- org poster card -->
       <div class="card h-100">
-        <div class="container-fluid">
-          <img class="card-img-top" src="{{movie.poster}}" alt="Poster of {{movie.title}}" id="poster_{{movie.column}}">
-        </div>
         <div class="card-body">
-          <h4 class="card-title">{{movie.title}}</h4>
-          <p class="card-text">{{movie.release}}</p>
-          <button class="btn btn-light" onclick="showDiscussFlag({{movie.column}}); return false;">Ask Rebert</button>
+          <h4 class="card-title">{{org.title}}</h4>
+          <p class="card-text">{{org.synop}}</p>
+{% if org.warning %}
+          <p class="card-text" style="font-size: small; color: orangered;">
+              <b>WARNING:</b> {{org.warning}} <a href="{{org.url}}" target="_blank">{{org.linktext}}</a>
+          </p>
+{% else %}
+          <p class="card-text"><b><a href="{{org.url}}" target="_blank">{{org.linktext}}</a></b></p>
+{% endif %}
+          <button class="btn btn-light" onclick="showDiscussFlag({{org.column}}); return false;">Chat about this group</button>
         </div>
       </div>
     </div>
@@ -205,7 +177,7 @@
 </div>
 
 
-<!-- PAGE BODY - discussion indicator to movie -->
+<!-- PAGE BODY - discussion indicator to org -->
 <div class="row bg-light">
   <div class="col-md-2 border-0" >
     <div id="discuss_slot_1">
@@ -239,18 +211,14 @@
 <div id="converse" class="collapse bg-light">
     <div class="container mt-0">
       <div class="mb-3 mt-0">
-        <label for="rebert_says">Rebert says:</label>
-{% if state.rebert_response %}
-        <textarea class="form-control" readonly rows="{{state.response_rows}}" id="ask_output" name="ask_output">{{state.rebert_response}}</textarea>
-{% else %}
-        <textarea class="form-control" readonly rows="5" id="ask_output" name="ask_output">What would you like to know about this movie?</textarea>
-{% endif %}
+        <label for="cc_says">CauseConnect says:</label>
+        <textarea class="form-control" readonly rows="{{state.response_rows}}" id="ask_output" name="ask_output">What would you like to know about this organization?</textarea>
       </div>
         <div class="mb-3 mt-3">
-          <label for="ask_rebert">Ask:</label>
-          <textarea class="form-control" rows="1" id="ask_input" name="question_text"></textarea>
+          <label for="ask_causeconnect">Ask:</label>
+          <textarea class="form-control" rows="1" id="ask_causeconnect" name="question_text"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" formaction="/ask_rebert">Ask Rebert</button>
+        <button type="submit" class="btn btn-primary" formaction="/ask_causeconnect">Ask CauseConnect</button>
     </div>
 </div>
 <!-- FORM END - it's almost the whole page -->

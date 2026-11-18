@@ -1,0 +1,71 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+127.0.0.1 - - [04/Jun/2026 21:32:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:32:24] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:32:24] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 1
+causeconnect_p1.0@qna_question_request(): Asking question 2
+127.0.0.1 - - [04/Jun/2026 21:34:07] "POST /next_question HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:34:07] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:34:07] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 1
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 2
+causeconnect_p1.0@qna_question_request(): Asking question 3
+127.0.0.1 - - [04/Jun/2026 21:34:38] "POST /next_question HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:34:38] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:34:38] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:35:08] "POST /next_question HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:35:08] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:35:08] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -
+causeconnect_p1.0@serve_ephem_rec(): User completed Q&A
+causeconnect_p1.0@serve_ephem_recommendation(): Starting ephemeral recommendation request after answering question 4, with local_only=False.
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 1
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 2
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 3
+causeconnect_p1.0@create_ephem_qna_str(): Have Q&A pair 4
+causeconnect_p1.0@make_ephem_rec_request(): Creating API requester
+causeconnect_p1.0@make_ephem_rec_request(): Response: <ORG><NAME>interACT: Advocates for Intersex Youth</NAME><DESCRIPTION>National advocacy group promoting intersex youth rights through education, storytelling, and policy change.</DESCRIPTION><URL>https://interactadvocates.org</URL><MATCH>HIGHLY MATCHED</MATCH><RATIONALE>You’re interested in public education, and interACT actively produces campaigns, stories, and media content. Your content creation skills could directly support their awareness work, and much of it can be done remotely.</RATIONALE></ORG> <ORG><NAME>Intersex Justice Project</NAME><DESCRIPTION>Grassroots initiative led by intersex people of color focusing on education, storytelling, and bodily autonomy.</DESCRIPTION><URL>https://www.intersexjusticeproject.org</URL><MATCH>HIGHLY MATCHED</MATCH><RATIONALE>This group centers storytelling and cultural change, which fits your interest in awareness campaigns. Your content skills could help amplify marginalized voices and expand their digital reach.</RATIONALE></ORG> <ORG><NAME>Organisation Intersex International (OII) USA</NAME><DESCRIPTION>Advocacy network advancing intersex human rights through education, outreach, and community organizing.</DESCRIPTION><URL>https://oiiusa.org</URL><MATCH>HIGHLY MATCHED</MATCH><RATIONALE>OII-USA does a lot of educational outreach and public-facing advocacy. With your 5 hours/week and content skills, you could contribute to messaging, blogs, or awareness campaigns.</RATIONALE></ORG> <ORG><NAME>Gender Justice League (Seattle)</NAME><DESCRIPTION>Seattle-based group advocating for gender diversity through education, policy, and community events.</DESCRIPTION><URL>https://www.gjleague.org</URL><MATCH>MILDLY MATCHED</MATCH><RATIONALE>While broader than intersex-specific work, they run local education campaigns and events. You could plug into Seattle-based storytelling and awareness efforts with real community impact.</RATIONALE></ORG> <ORG><NAME>PFLAG Seattle</NAME><DESCRIPTION>Local chapter supporting LGBTQ+ inclusion through education, advocacy, and community storytelling.</DESCRIPTION><URL>https://pflagseattle.org</URL><MATCH>MILDLY MATCHED</MATCH><RATIONALE>PFLAG focuses heavily on public education and community outreach, which aligns with your interests. You could help create inclusive content that incorporates intersex visibility into broader LGBTQ+ narratives.</RATIONALE></ORG> <ORG><NAME>AIS-DSD Support Group</NAME><DESCRIPTION>Support and advocacy organization for intersex individuals and families, emphasizing education and awareness.</DESCRIPTION><URL>https://aisdsd.org</URL><MATCH>HIGHLY MATCHED</MATCH><RATIONALE>This group values clear, accessible educational content for the public and families. Your content creation skills could help translate complex intersex topics into compelling, stigma-reducing materials.</RATIONALE></ORG>
+causeconnect_p1.0@checkWebsite(): Requesting 'https://interactadvocates.org'
+causeconnect_p1.0@checkWebsite(): Checking actual title '>intersex law &amp; policy, media, and youth leadership | interact' against expected title 'interact: advocates for intersex youth'
+causeconnect_p1.0@checkWebsite(): Checking for expected title 'interact: advocates for intersex youth' in page contents
+causeconnect_p1.0@checkWebsite(): Requesting 'https://www.intersexjusticeproject.org'
+causeconnect_p1.0@checkWebsite(): Checking actual title '>intersex justice project | black and brown intersex people winning bodily autonomy' against expected title 'intersex justice project'
+causeconnect_p1.0@checkWebsite(): Requesting 'https://oiiusa.org'
+causeconnect_p1.0@checkWebsite(): Checking actual title '>bridge building for intersex people, our families &amp; friends  &#8211; together we are stronger!' against expected title 'organisation intersex international'
+causeconnect_p1.0@checkWebsite(): Checking for expected title 'organisation intersex international' in page contents
+causeconnect_p1.0@checkWebsite(): Requesting 'https://www.gjleague.org'
+causeconnect_p1.0@checkWebsite(): Hit a connection error!
+causeconnect_p1.0@checkWebsite(): Requesting 'https://pflagseattle.org'
+causeconnect_p1.0@checkWebsite(): Checking actual title '>pflag seattle &#8211; creating a caring, just, and affirming world for lgbtq+ people and those who love them' against expected title 'pflag seattle'
+causeconnect_p1.0@checkWebsite(): Requesting 'https://aisdsd.org'
+causeconnect_p1.0@checkWebsite(): Checking actual title '>home - interconnect support' against expected title 'ais-dsd support group'
+causeconnect_p1.0@checkWebsite(): Checking for expected title 'ais-dsd support group' in page contents
+causeconnect_p1.0@serve_ephem_recommendation(): Ephemeral recommendation elapsed time: 0:00:26.598955
+causeconnect_p1.0@update_recommendation_flags(): Recommendation for 'interact: advocates for intersex youth' is 'recommendation: highly recommended'
+causeconnect_p1.0@update_recommendation_flags(): Recommendation for 'intersex justice project' is 'recommendation: highly recommended'
+causeconnect_p1.0@update_recommendation_flags(): Recommendation for 'organisation intersex international (oii) usa' is 'recommendation: highly recommended'
+causeconnect_p1.0@update_recommendation_flags(): Recommendation for 'gender justice league (seattle)' is 'recommendation: suggested'
+causeconnect_p1.0@update_recommendation_flags(): Recommendation for 'pflag seattle' is 'recommendation: suggested'
+causeconnect_p1.0@update_recommendation_flags(): Recommendation for 'ais-dsd support group' is 'recommendation: highly recommended'
+causeconnect_p1.0@get_discussion_content_list(): Kept 'rationale' as last turn for 'interact: advocates for intersex youth'.
+causeconnect_p1.0@get_discussion_content_list(): Kept 'rationale' as last turn for 'intersex justice project'.
+causeconnect_p1.0@get_discussion_content_list(): Kept 'rationale' as last turn for 'organisation intersex international (oii) usa'.
+causeconnect_p1.0@get_discussion_content_list(): Kept 'rationale' as last turn for 'gender justice league (seattle)'.
+causeconnect_p1.0@get_discussion_content_list(): Kept 'rationale' as last turn for 'pflag seattle'.
+causeconnect_p1.0@get_discussion_content_list(): Kept 'rationale' as last turn for 'ais-dsd support group'.
+127.0.0.1 - - [04/Jun/2026 21:35:51] "POST /ephem_recommend HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:35:51] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:35:52] "GET /static/indicators/rec-highly-small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:35:52] "GET /static/indicators/rec-suggested-small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:35:52] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:37:23] "POST /ask_causeconnect HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:37:24] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:37:24] "GET /static/indicators/rec-highly-small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:37:24] "GET /static/indicators/rec-suggested-small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:37:24] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:38:24] "POST /ask_causeconnect HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jun/2026 21:38:24] "GET /static/rebert_mainpage_ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:38:24] "GET /static/indicators/rec-highly-small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:38:24] "GET /static/indicators/rec-suggested-small.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Jun/2026 21:38:24] "GET /static/indicators/discussing_pointer_small.png HTTP/1.1" 304 -

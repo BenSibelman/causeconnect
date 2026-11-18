@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # 
 #   FILE: wsgi.py
-#   REVISION: November, 2024
+#   REVISION: June, 2026
 #   CREATION DATE: June, 2024
-#   Author: David W. McDonald
+#   Authors: David W. McDonald, Ben Sibelman
 #
 #   Rebert server web page dispatch. This maps the incoming URLs to specific functions
 #   in the code base.
@@ -21,15 +21,15 @@ import sys, os
 from flask import Flask, request
 #
 #
-from rebert._prototype_6_.web.config import *
-from rebert._prototype_6_.web.setup import *
-from rebert._prototype_6_.web.serve_main_page import *
-from rebert._prototype_6_.web.serve_ephem_rec import *
+from causeconnect_ai._causeconnect_1_0_.web.config import *    # MODIFIED
+from causeconnect_ai._causeconnect_1_0_.web.setup import *    # MODIFIED
+from causeconnect_ai._causeconnect_1_0_.web.serve_main_page import *    # MODIFIED
+from causeconnect_ai._causeconnect_1_0_.web.serve_ephem_rec import *    # MODIFIED
 #
 #   Required set up before any serving actions
 app = Flask(__name__)
 #   This also seems to work
-#app = Flask("rebert._prototype_6_.web.wsgi")
+#app = Flask("causeconnect_ai._causeconnect_1_0_.web.wsgi")    # MODIFIED
 #
 global SERVER_STATE
 SERVER_STATE = initalize_server_state()
@@ -60,10 +60,10 @@ def home_page():
 #
 ##############
 #
-@app.route("/ask_rebert", methods=['POST'])
-def ask_rebert():
+@app.route("/ask_causeconnect", methods=['POST'])
+def ask_causeconnect():
     #   comes from serve_main_page.py
-    page = serve_ask_rebert_response(request, SERVER_STATE)
+    page = serve_ask_causeconnect_response(request, SERVER_STATE)
     return page
 
 
@@ -83,5 +83,12 @@ def ephem_next_question():
 @app.route("/ephem_recommend", methods=['POST'])
 def ephem_recommendation():
     #   comes from serve_ephem_rec.py
-    page = serve_ephem_recommendation(request, SERVER_STATE)
+    page = serve_ephem_recommendation(request, SERVER_STATE, False)
+    return page
+#
+#
+@app.route("/ephem_recommend_local", methods=['POST'])
+def ephem_recommendation_local():
+    #   comes from serve_ephem_rec.py
+    page = serve_ephem_recommendation(request, SERVER_STATE, True)
     return page
